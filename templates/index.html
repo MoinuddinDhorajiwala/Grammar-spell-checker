@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="NLP based grammar and spell checker">
+    <title>NLP Grammar & Spell Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="app-shell">
+
+    <header class="hero">
+        <div class="badge">NLP MINI PROJECT</div>
+        <h1>Grammar & Spell Checker</h1>
+        <p>
+            An NLP-powered system for grammar correction, spell checking,
+            document analysis and original-vs-corrected comparison.
+        </p>
+
+        <div class="members">
+            <div class="members-title">Group Members</div>
+            <div class="member-grid">
+                <div><strong>Moinuddin Zaid Dhorajiwala</strong><span>231238</span></div>
+                <div><strong>Mohammed Aadil Kumshi</strong><span>231232</span></div>
+                <div><strong>Rohit Madhukar More</strong><span>231239</span></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">01</span>
+                    <h2>Check Text</h2>
+                </div>
+                <span class="pill">NLP</span>
+            </div>
+
+            <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+
+            <div class="action-row">
+                <button id="checkTextBtn" class="primary">Check Grammar & Spelling</button>
+                <button id="clearTextBtn" class="secondary">Clear</button>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">02</span>
+                    <h2>Upload Document</h2>
+                </div>
+                <span class="pill">TXT / PDF</span>
+            </div>
+
+            <label class="dropzone" id="dropzone">
+                <input type="file" id="fileInput" accept=".txt,.pdf">
+                <div class="upload-icon">↑</div>
+                <strong>Choose a TXT or PDF file</strong>
+                <span>or drag and drop it here</span>
+                <small>Maximum request size: 8 MB</small>
+            </label>
+
+            <div id="selectedFile" class="selected-file"></div>
+
+            <button id="checkFileBtn" class="primary" disabled>
+                Check File
+            </button>
+        </section>
+
+        <div id="status" class="status"></div>
+
+        <section id="dashboard" class="panel results-panel hidden">
+            <div class="result-top">
+                <div>
+                    <span class="eyebrow">03</span>
+                    <h2>Analysis Dashboard</h2>
+                </div>
+                <div class="download-actions">
+                    <button id="downloadTxtBtn" class="secondary">↓ TXT</button>
+                    <button id="downloadPdfBtn" class="secondary">↓ PDF</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card"><span>Words</span><strong id="statWords">0</strong></div>
+                <div class="stat-card"><span>Sentences</span><strong id="statSentences">0</strong></div>
+                <div class="stat-card"><span>Characters</span><strong id="statCharacters">0</strong></div>
+                <div class="stat-card correction"><span>Corrections</span><strong id="statCorrections">0</strong></div>
+                <div class="stat-card"><span>Unique Words</span><strong id="statUnique">0</strong></div>
+                <div class="stat-card"><span>Avg. Sentence</span><strong id="statAverage">0</strong></div>
+            </div>
+
+            <div class="comparison-title">
+                <div>
+                    <span class="eyebrow">04</span>
+                    <h2>Original vs Corrected</h2>
+                </div>
+                <span id="fileName" class="file-name"></span>
+            </div>
+
+            <div class="comparison">
+                <article class="text-card original">
+                    <header>Original Text</header>
+                    <pre id="originalText"></pre>
+                </article>
+
+                <article class="text-card corrected">
+                    <header>Corrected Text</header>
+                    <pre id="correctedText"></pre>
+                </article>
+            </div>
+
+            <div class="lower-grid">
+                <div class="subpanel">
+                    <h3>Top Words</h3>
+                    <div id="topWords" class="word-list"></div>
+                </div>
+
+                <div class="subpanel">
+                    <h3>Corrections & Suggestions</h3>
+                    <div id="corrections" class="correction-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>Natural Language Processing Mini Project</span>
+        <a href="https://languagetool.org" target="_blank" rel="noopener">Grammar engine: LanguageTool</a>
+    </footer>
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
